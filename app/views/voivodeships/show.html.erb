@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @voivodeship.name %>
+</p>
+
+<p>
+  <strong>Number of seats:</strong>
+  <%= @voivodeship.number_of_seats %>
+</p>
+
+<%= link_to 'Edit', edit_voivodeship_path(@voivodeship) %> |
+<%= link_to 'Back', voivodeships_path %>

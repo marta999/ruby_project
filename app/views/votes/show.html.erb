@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @vote.number %>
+</p>
+
+<p>
+  <strong>Number of invalid:</strong>
+  <%= @vote.number_of_invalid %>
+</p>
+
+<p>
+  <strong>Constituency:</strong>
+  <%= @vote.constituency %>
+</p>
+
+<%= link_to 'Edit', edit_vote_path(@vote) %> |
+<%= link_to 'Back', votes_path %>
