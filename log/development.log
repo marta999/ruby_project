@@ -1667,3 +1667,1178 @@ Started GET "/assets/committees-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for 
 
 
 Started GET "/assets/application-0b69fc62fe6d82b6c3f50ac5dc870324.js?body=1" for 127.0.0.1 at 2015-01-20 21:29:14 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-27 16:04:30 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/railties-4.2.0/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 81ms (Views: 60.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-01-27 16:04:36 +0100
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 574ms (Views: 562.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-01-27 16:04:39 +0100
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (100.6ms)
+  Rendered users/new.html.erb within layouts/application (114.5ms)
+Completed 200 OK in 240ms (Views: 231.5ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateAdminUsers (20150127150545)
+  [1m[35m (0.1ms)[0m  begin transaction
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /home/marta/Dokumenty/project/db/migrate/20150127150545_devise_create_admin_users.rb:40)
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "admin_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[35mAdminUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "admin_users" WHERE "admin_users"."email" = 'admin@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "admin@example.com"], ["encrypted_password", "$2a$10$V7a4ftpZ5MRfiiy7g5KxruIqwRnLc49XKoqKjV/tqDa7ue8WB5pY."], ["created_at", "2015-01-27 15:06:11.763334"], ["updated_at", "2015-01-27 15:06:11.763334"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150127150545"]]
+  [1m[36m (148.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateActiveAdminComments (20150127150548)
+  [1m[35m (0.2ms)[0m  begin transaction
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in up at /home/marta/Dokumenty/project/db/migrate/20150127150548_create_active_admin_comments.rb:9)
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "active_admin_comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_id" varchar NOT NULL, "resource_type" varchar NOT NULL, "author_id" integer, "author_type" varchar, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" ("author_type", "author_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150127150548"]]
+  [1m[36m (159.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.8ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_committees_on_logo_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_committees_on_logo_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_constituencies_on_voivodeship_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_constituencies_on_voivodeship_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_constituency_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_constituency_id' AND type='index'
+
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-01-27 16:06:22 +0100
+
+NameError (uninitialized constant ActiveAdmin):
+  config/routes.rb:2:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (4.9ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (31.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-01-27 16:10:40 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/admin"):
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:22:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/routes/_table.html.erb (9.6ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.2ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/routing_error.html.erb within rescues/layout (47.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-01-27 16:10:56 +0100
+
+ActionController::RoutingError (No route matches [GET] "/admin"):
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:22:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/routes/_table.html.erb (2.1ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.7ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/routing_error.html.erb within rescues/layout (26.8ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-01-27 16:13:01 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 17ms
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2015-01-27 16:13:01 +0100
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/devise/shared/_links.erb (6.9ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (88.1ms)
+Completed 200 OK in 3842ms (Views: 3821.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/active_admin-0575534917ec5855b836c526ebe03cb3.css?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/active_admin/print-f4da8343184b75f96c0c11b3927ee2f2.css?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/core-290c80ecb8a0cc8abe3ce4c572428231.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/datepicker-46fef2bd08c7152eabb139e0fce7b289.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/button-2beb8f828ae2bf5bd866a1d49a961e89.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/widget-320c0e6ab9d0ba9853aeac7cde601034.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/mouse-ff2fbf51cc09ac75e71dfc85cd384590.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/draggable-9250c452292e1bd4057d39344ed9f6f2.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/position-a246667f9ce1d2f29e825269f137af38.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/resizable-4ceb16086b541dd8503b73ff1ebe634a.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/dialog-c1fa41ba5b29b08fcab3fe60e7172348.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/sortable-fd3842e48545c56fbd507aee96bb367d.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:05 +0100
+
+
+Started GET "/assets/jquery-ui/tabs-77d5968531a2f0c3e331c2b690c87826.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/base-2181e9e3997cb425be6807982e5e42d3.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/batch_actions-9d98d7cf1f49cc2f494d6115d7097fe1.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/checkbox-toggler-633bd32bab7ec25731a67af1e817d147.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/dropdown-menu-776a76a83c4068a214a4eb470b57dae4.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/flash-977ddfc1a734c9e50e7d0c2d3af15d14.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/has_many-54702962e8fef0b2eedd2af90681c1a4.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/modal_dialog-f13deb4b26f91eba24bf9d635d68c54e.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/per_page-b1d97a79c912d2085d3971cc09e6927a.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/popover-cbb946556eca6cc675ed0a89ed2d1ddc.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/lib/table-checkbox-toggler-f0fc7612f005a3d5a2cc8892039b9eed.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/ext/jquery-ui-00c454438ea743a97c0676f6037b7cd9.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/ext/jquery-4b28b832ea8e9b1086f94de24e19ef5d.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin/application-9f5fa024ba244a0f8d80741d8bb4da35.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started GET "/assets/active_admin-459d2a2b6e0ca8782914b45efbc74394.js?body=1" for 127.0.0.1 at 2015-01-27 16:13:06 +0100
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2015-01-27 16:13:37 +0100
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xpIQ7MBxo95TDTALz+Lk06s5dFgjn8ZdHOwVvMry6ysgLL9f5hGIl/WpOnef+SnzKrRqdEk/5Rywo1XjNWfsVw==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[35mAdminUser Load (0.3ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["email", "admin@example.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "admin_users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "admin_users"."id" = ?  [["last_sign_in_at", "2015-01-27 15:13:37.389112"], ["current_sign_in_at", "2015-01-27 15:13:37.389112"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-01-27 15:13:37.390875"], ["id", 1]]
+  [1m[36m (116.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 346ms (ActiveRecord: 117.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-01-27 16:13:37 +0100
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mAdminUser Load (0.3ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/page/index.html.arb (199.2ms)
+Completed 200 OK in 209ms (Views: 204.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-01-27 16:13:45 +0100
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.1ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "admin_users"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (280.4ms)
+Completed 200 OK in 293ms (Views: 286.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/active_admin/orderable-92b68ae0bf160729319da0c727c039b1.png" for 127.0.0.1 at 2015-01-27 16:13:45 +0100
+
+
+Started GET "/assets/active_admin/datepicker/datepicker-input-icon-3d51969545a8ca7d40fca3ad4dbfa829.png" for 127.0.0.1 at 2015-01-27 16:13:45 +0100
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-01-27 16:34:44 +0100
+
+NameError (undefined local variable or method `ctiveAdmin' for main:Object):
+  app/admin/constituencies.rb:1:in `<top (required)>'
+  config/routes.rb:3:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (5.4ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.0ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (30.9ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-01-27 16:35:37 +0100
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/page/index.html.arb (210.1ms)
+Completed 200 OK in 247ms (Views: 214.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/admin/constituencies" for 127.0.0.1 at 2015-01-27 16:35:45 +0100
+Processing by Admin::ConstituenciesController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "constituencies"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mConstituency Load (0.2ms)[0m  [1mSELECT  "constituencies".* FROM "constituencies"  ORDER BY "constituencies"."id" desc LIMIT 30 OFFSET 0[0m
+  [1m[35mVoivodeship Load (0.5ms)[0m  SELECT "voivodeships".* FROM "voivodeships"
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (325.0ms)
+Completed 200 OK in 336ms (Views: 329.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/admin/constituencies" for 127.0.0.1 at 2015-01-27 16:39:40 +0100
+Processing by Admin::ConstituenciesController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "constituencies"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mConstituency Load (0.2ms)[0m  SELECT  "constituencies".* FROM "constituencies"  ORDER BY "constituencies"."id" desc LIMIT 30 OFFSET 0
+  [1m[36mVoivodeship Load (0.2ms)[0m  [1mSELECT "voivodeships".* FROM "voivodeships"[0m
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (272.3ms)
+Completed 200 OK in 305ms (Views: 277.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/admin/voivodeships" for 127.0.0.1 at 2015-01-27 16:39:46 +0100
+Processing by Admin::VoivodeshipsController#index as HTML
+  [1m[35mAdminUser Load (0.3ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "voivodeships" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "voivodeships" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "voivodeships"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "voivodeships" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mVoivodeship Load (0.2ms)[0m  [1mSELECT  "voivodeships".* FROM "voivodeships"  ORDER BY "voivodeships"."id" desc LIMIT 30 OFFSET 0[0m
+  [1m[35mConstituency Load (0.2ms)[0m  SELECT "constituencies".* FROM "constituencies"
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (258.4ms)
+Completed 200 OK in 272ms (Views: 264.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/constituencies" for 127.0.0.1 at 2015-01-27 16:39:51 +0100
+Processing by Admin::ConstituenciesController#index as HTML
+  [1m[36mAdminUser Load (0.1ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "constituencies"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "constituencies" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mConstituency Load (0.2ms)[0m  SELECT  "constituencies".* FROM "constituencies"  ORDER BY "constituencies"."id" desc LIMIT 30 OFFSET 0
+  [1m[36mVoivodeship Load (0.2ms)[0m  [1mSELECT "voivodeships".* FROM "voivodeships"[0m
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (260.1ms)
+Completed 200 OK in 267ms (Views: 263.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/committees" for 127.0.0.1 at 2015-01-27 16:39:55 +0100
+Processing by Admin::CommitteesController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "committees" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (241.5ms)
+Completed 500 Internal Server Error in 253ms
+
+ActionView::Template::Error (uninitialized constant Committee::Logo):
+    1: insert_tag renderer_for(:index)
+  activerecord (4.2.0) lib/active_record/inheritance.rb:158:in `compute_type'
+  activerecord (4.2.0) lib/active_record/reflection.rb:271:in `compute_class'
+  activerecord (4.2.0) lib/active_record/reflection.rb:267:in `klass'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:90:in `collection_from_association'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:46:in `raw_collection'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:51:in `collection'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/inputs/filters/select_input.rb:43:in `collection'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:145:in `select_html'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:140:in `block in to_html'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/inputs/filters/base.rb:12:in `input_wrapping'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:138:in `to_html'
+  formtastic (3.1.3) lib/formtastic/helpers/input_helper.rb:240:in `input'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:14:in `filter'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:62:in `block (2 levels) in active_admin_filters_form_for'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:58:in `each'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:58:in `block in active_admin_filters_form_for'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.0) lib/action_view/helpers/form_helper.rb:444:in `form_for'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:57:in `active_admin_filters_form_for'
+  arbre (1.0.3) lib/arbre/element.rb:180:in `method_missing'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/resource_extension.rb:136:in `block in filters_sidebar_section'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:20:in `instance_exec'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:20:in `build_sidebar_content'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:13:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `sidebar_section'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:126:in `block (2 levels) in build_sidebar'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:125:in `collect'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:125:in `block in build_sidebar'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:124:in `build_sidebar'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:72:in `block in build_page_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:70:in `build_page_content'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:48:in `block (2 levels) in build_page'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:44:in `block in build_page'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:43:in `build_page'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:10:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:2:in `block in __home_marta__rvm_gems_ruby_______bundler_gems_activeadmin___fc____ce_d_app_views_active_admin_resource_index_html_arb__3597094938049753291_69982777357680'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `instance_eval'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `initialize'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:1:in `new'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:1:in `__home_marta__rvm_gems_ruby_______bundler_gems_activeadmin___fc____ce_d_app_views_active_admin_resource_index_html_arb__3597094938049753291_69982777357680'
+  actionview (4.2.0) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:236:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.1.0) lib/responders/flash_responder.rb:107:in `to_html'
+  responders (2.1.0) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.1.0) lib/action_controller/responder.rb:156:in `call'
+  responders (2.1.0) lib/action_controller/respond_with.rb:203:in `respond_with'
+  inherited_resources (1.6.0) lib/inherited_resources/actions.rb:7:in `index'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/resource_controller/streaming.rb:12:in `index'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (15.4ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (5.7ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (50.3ms)
+
+
+Started GET "/admin/committees" for 127.0.0.1 at 2015-01-27 16:44:37 +0100
+Processing by Admin::CommitteesController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "committees" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (234.2ms)
+Completed 500 Internal Server Error in 241ms
+
+ActionView::Template::Error (uninitialized constant Committee::Logo):
+    1: insert_tag renderer_for(:index)
+  activerecord (4.2.0) lib/active_record/inheritance.rb:158:in `compute_type'
+  activerecord (4.2.0) lib/active_record/reflection.rb:271:in `compute_class'
+  activerecord (4.2.0) lib/active_record/reflection.rb:267:in `klass'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:90:in `collection_from_association'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:46:in `raw_collection'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:51:in `collection'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/inputs/filters/select_input.rb:43:in `collection'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:145:in `select_html'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:140:in `block in to_html'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/inputs/filters/base.rb:12:in `input_wrapping'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:138:in `to_html'
+  formtastic (3.1.3) lib/formtastic/helpers/input_helper.rb:240:in `input'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:14:in `filter'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:62:in `block (2 levels) in active_admin_filters_form_for'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:58:in `each'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:58:in `block in active_admin_filters_form_for'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.0) lib/action_view/helpers/form_helper.rb:444:in `form_for'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:57:in `active_admin_filters_form_for'
+  arbre (1.0.3) lib/arbre/element.rb:180:in `method_missing'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/resource_extension.rb:136:in `block in filters_sidebar_section'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:20:in `instance_exec'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:20:in `build_sidebar_content'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:13:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `sidebar_section'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:126:in `block (2 levels) in build_sidebar'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:125:in `collect'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:125:in `block in build_sidebar'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:124:in `build_sidebar'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:72:in `block in build_page_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:70:in `build_page_content'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:48:in `block (2 levels) in build_page'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:44:in `block in build_page'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:43:in `build_page'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:10:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:2:in `block in __home_marta__rvm_gems_ruby_______bundler_gems_activeadmin___fc____ce_d_app_views_active_admin_resource_index_html_arb__3597094938049753291_69982777357680'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `instance_eval'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `initialize'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:1:in `new'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:1:in `__home_marta__rvm_gems_ruby_______bundler_gems_activeadmin___fc____ce_d_app_views_active_admin_resource_index_html_arb__3597094938049753291_69982777357680'
+  actionview (4.2.0) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:236:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.1.0) lib/responders/flash_responder.rb:107:in `to_html'
+  responders (2.1.0) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.1.0) lib/action_controller/responder.rb:156:in `call'
+  responders (2.1.0) lib/action_controller/respond_with.rb:203:in `respond_with'
+  inherited_resources (1.6.0) lib/inherited_resources/actions.rb:7:in `index'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/resource_controller/streaming.rb:12:in `index'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (15.6ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (5.7ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.3ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (45.5ms)
+
+
+Started GET "/logo" for 127.0.0.1 at 2015-01-27 16:45:47 +0100
+
+ActionController::RoutingError (No route matches [GET] "/logo"):
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:22:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/routes/_route.html.erb (6.0ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/routes/_table.html.erb (2.4ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.2ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/routing_error.html.erb within rescues/layout (389.4ms)
+
+
+Started GET "/admin/" for 127.0.0.1 at 2015-01-27 16:47:58 +0100
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/page/index.html.arb (207.6ms)
+Completed 200 OK in 216ms (Views: 213.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-01-27 16:48:01 +0100
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "admin_users"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAdminUser Load (0.3ms)[0m  SELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (269.8ms)
+Completed 200 OK in 279ms (Views: 275.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2015-01-27 16:48:03 +0100
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = ?  [["namespace", "admin"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = ? LIMIT 30 OFFSET 0) subquery_for_count[0m  [["namespace", "admin"]]
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments"  ORDER BY resource_type asc
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments"  ORDER BY author_type asc[0m
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (251.9ms)
+Completed 200 OK in 264ms (Views: 258.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admin/committees" for 127.0.0.1 at 2015-01-27 16:48:04 +0100
+Processing by Admin::CommitteesController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "committees" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb (249.3ms)
+Completed 500 Internal Server Error in 257ms
+
+ActionView::Template::Error (uninitialized constant Committee::Logo):
+    1: insert_tag renderer_for(:index)
+  activerecord (4.2.0) lib/active_record/inheritance.rb:158:in `compute_type'
+  activerecord (4.2.0) lib/active_record/reflection.rb:271:in `compute_class'
+  activerecord (4.2.0) lib/active_record/reflection.rb:267:in `klass'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:90:in `collection_from_association'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:46:in `raw_collection'
+  formtastic (3.1.3) lib/formtastic/inputs/base/collections.rb:51:in `collection'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/inputs/filters/select_input.rb:43:in `collection'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:145:in `select_html'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:140:in `block in to_html'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/inputs/filters/base.rb:12:in `input_wrapping'
+  formtastic (3.1.3) lib/formtastic/inputs/select_input.rb:138:in `to_html'
+  formtastic (3.1.3) lib/formtastic/helpers/input_helper.rb:240:in `input'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:14:in `filter'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:62:in `block (2 levels) in active_admin_filters_form_for'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:58:in `each'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:58:in `block in active_admin_filters_form_for'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `block in capture'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:200:in `with_output_buffer'
+  actionview (4.2.0) lib/action_view/helpers/capture_helper.rb:38:in `capture'
+  actionview (4.2.0) lib/action_view/helpers/form_helper.rb:444:in `form_for'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/forms.rb:57:in `active_admin_filters_form_for'
+  arbre (1.0.3) lib/arbre/element.rb:180:in `method_missing'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/filters/resource_extension.rb:136:in `block in filters_sidebar_section'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:20:in `instance_exec'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:20:in `build_sidebar_content'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/components/sidebar_section.rb:13:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `sidebar_section'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:126:in `block (2 levels) in build_sidebar'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:125:in `collect'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:125:in `block in build_sidebar'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:124:in `build_sidebar'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:72:in `block in build_page_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:70:in `build_page_content'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:48:in `block (2 levels) in build_page'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:44:in `block in build_page'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:43:in `build_page'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/views/pages/base.rb:10:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:2:in `block in __home_marta__rvm_gems_ruby_______bundler_gems_activeadmin___fc____ce_d_app_views_active_admin_resource_index_html_arb__3597094938049753291_69982777357680'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `instance_eval'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `initialize'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:1:in `new'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/app/views/active_admin/resource/index.html.arb:1:in `__home_marta__rvm_gems_ruby_______bundler_gems_activeadmin___fc____ce_d_app_views_active_admin_resource_index_html_arb__3597094938049753291_69982777357680'
+  actionview (4.2.0) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.0) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.0) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:236:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.1.0) lib/responders/flash_responder.rb:107:in `to_html'
+  responders (2.1.0) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.1.0) lib/action_controller/responder.rb:156:in `call'
+  responders (2.1.0) lib/action_controller/respond_with.rb:203:in `respond_with'
+  inherited_resources (1.6.0) lib/inherited_resources/actions.rb:7:in `index'
+  /home/marta/.rvmruby (2.2.0) bundler/gems/activeadmin-82fc7330ce1d/lib/active_admin/resource_controller/streaming.rb:12:in `index'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/marta/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (15.9ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (6.4ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /home/marta/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (45.7ms)
